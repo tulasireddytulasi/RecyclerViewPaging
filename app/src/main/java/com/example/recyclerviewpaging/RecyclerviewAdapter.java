@@ -39,11 +39,14 @@ public class RecyclerviewAdapter extends PagedListAdapter<StackApiRespnse.Result
         if (resultsBean != null) {
 
             Glide.with(context)
-                    .load("http://image.tmdb.org/t/p/w342" + resultsBean.getBackdrop_path())
-                    .placeholder(R.drawable.bg)
+                    .load("http://image.tmdb.org/t/p/w342" + resultsBean.getPoster_path())
+                    .placeholder(R.drawable.poster)
                     .into(holder.imageView);
 
-            holder.textView.setText(resultsBean.getTitle());
+            holder.title.setText(resultsBean.getTitle());
+            holder.overview.setText(resultsBean.getOverview());
+            holder.realse_date.setText(resultsBean.getRelease_date());
+
 
         } else {
             Toast.makeText(context, "No Data", Toast.LENGTH_LONG).show();
@@ -67,12 +70,14 @@ public class RecyclerviewAdapter extends PagedListAdapter<StackApiRespnse.Result
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imageView;
-        TextView textView;
+        TextView title,overview,realse_date;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.image);
-            textView = itemView.findViewById(R.id.text);
+            imageView = itemView.findViewById(R.id.img);
+            title = itemView.findViewById(R.id.title);
+            overview = itemView.findViewById(R.id.overview);
+            realse_date = itemView.findViewById(R.id.date);
         }
     }
 }
