@@ -41,6 +41,7 @@ public class RecyclerviewAdapter extends PagedListAdapter<StackApiRespnse.Result
             Glide.with(context)
                     .load("http://image.tmdb.org/t/p/w342" + resultsBean.getPoster_path())
                     .placeholder(R.drawable.poster)
+                    .centerCrop()
                     .into(holder.imageView);
 
             holder.title.setText(resultsBean.getTitle());
